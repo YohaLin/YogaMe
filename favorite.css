@@ -1,0 +1,58 @@
+/* body */
+body {
+  background-image: url(https://images.unsplash.com/photo-1538240175502-ec4eb4455f34?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: fixed;
+  background-attachment: fixed;
+  background-position: center;
+  /*  position：center讓圖片縮放由中間來變動  */
+  /*  參考網站：https://www.astralweb.com.tw/full-screen-backround-image/  */
+  width: 100%;
+  /*   height: 100%; */
+  min-height: 500px;
+}
+
+/* Navbar */
+
+#nav-yogame {
+  color: #ae3c2b;
+}
+
+#nav-home {
+  color: gray;
+}
+
+#nav-home:hover {
+  color: #ae3c2b;
+  border: 3px solid #ae3c2b;
+  border-top: none;
+  border-right: none;
+  border-left: none;
+}
+
+#nav-fav {
+  color: #ae3c2b;
+}
+
+#nav-fav:hover {
+  border: 3px solid #ae3c2b;
+  border-top: none;
+  border-right: none;
+  border-left: none;
+}
+
+#btn-search {
+  color: #ae3c2b;
+  outline-color: #ae3c2b;
+}
+
+/* Cards */
+#friends-zone {
+  margin: 0 auto 200px auto;
+}
+
+/* Modal */
+#modal-name {
+  color: #ae3c2b;
+}

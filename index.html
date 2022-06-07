@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>replit</title>
+  <link href="index.css" rel="stylesheet" type="text/css" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+  <script src="https://kit.fontawesome.com/bb98d178a7.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg bg-transparent mb-3">
+    <div class="container-fluid px-5 pt-1">
+      <a class="navbar-brand fs-2" href="#" id="nav-yogame">YogaMe</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active fs-4" aria-current="page" href="#" id="nav-home">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link fs-4" href="favorite.html" id="nav-fav">Favorite</a>
+          </li>
+        </ul>
+        <!--    Search Bar    -->
+        <form class="d-flex" id="search-form" role="search">
+          <input class="form-control me-2" type="search" id="btn-input" placeholder="Look for YogaFriends"
+            aria-label="Search">
+          <button class="btn  " type="submit" id="btn-search">Search</button>
+        </form>
+      </div>
+    </div>
+  </nav>
+
+  <div class="row" id="friends-zone" style="width:90%">
+    <!--  Card  -->
+    <div id="data-panel" class="d-flex flex-wrap justify-content-center">
+      <div class="card mb-2b pt-2 d-flex flex-column align-items-center" style="width: 15rem;">
+        <img type="button" src="https://randomuser.me/api/portraits/men/88.jpg" class="card-img-top w-75 h-75"
+          id="card-img" data-bs-toggle="modal" data-bs-target="#modal-btn" alt="avatar-img">
+        <div class="card-body d-flex flex-column align-items-center">
+          <h5 class="card-title" id="card-title">Guillaume Vincent</h5>
+          <p class="card-text" id="card-birthday">1995-05-05</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Modal -->
+  <div class="modal fade " id="modal-btn" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title fs-1" id="modal-name">Guillaume Vincent</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body d-flex ">
+          <img id="modal-avatar" class="w-25" src="https://randomuser.me/api/portraits/men/88.jpg" alt="avatar-img">
+          <div class="ms-5" id="modal-text">
+            <p class="fs-4" id="modal-gender">Gender: male</p>
+            <p class="fs-4" id="modal-age">Age: 25</p>
+            <p class="fs-4" id="modal-birthday">Birthday: 1995-05-05</p>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Paginator -->
+  <nav aria-label="..." class="mt-3">
+    <ul class="pagination justify-content-center " id="paginator">
+      <li class="page-item">
+        <a class="page-link minus" id="page-previous">Previous</a>
+      </li>
+      <li class="page-item"><a class="page-link" href="#">1</a></li>
+      <li class="page-item active" aria-current="page">
+        <a class="page-link" href="#">2</a>
+      </li>
+      <li class="page-item"><a class="page-link" href="#">3</a></li>
+      <li class="page-item">
+        <a class="page-link" href="#" id="page-next">Next</a>
+      </li>
+    </ul>
+  </nav>
+</body>
+
+<!-- 先引用axios -->
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<!-- 載入Bootstra所提供的JS檔案 -->
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js"
+  integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.min.js"
+  integrity="sha384-kjU+l4N0Yf4ZOJErLsIcvOU2qSb74wXpOhqTvwVx3OElZRweTnQ6d31fXEoRD1Jy" crossorigin="anonymous"></script>
+<!-- 載入自己寫的JS檔案 -->
+<script src="./index.js"></script>
+
+</html>
