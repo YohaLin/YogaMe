@@ -10,11 +10,13 @@ const CARD_PER_PAGE = 12;
 const navFavorite = document.querySelector("nav-fav");
 const searchForm = document.querySelector("#search-form");
 const btnInput = document.querySelector("#btn-input");
+const shiftCardAndList = document.querySelector('#shift-card-and-list')
 
 function renderFriendsList(file) {
-  let rawHTML = "";
-  file.forEach((item) => {
-    rawHTML += `
+  if (dataPanel.dataset.mode === 'card-mode'){
+    let rawHTML = "";
+    file.forEach((item) => {
+      rawHTML += `
   <div class="bg-white m-2 pt-4 d-flex flex-column align-items-center rounded-4" style="width: 15rem;">
       <img type="button" src="${item.avatar}" class="card-img-top w-auto h-75 rounded-circle" id="card-img" data-bs-toggle="modal" data-bs-target="#modal-btn" alt="avatar-img" data-id="${item.id}">
       <div class="card-body d-flex flex-column align-items-center">
@@ -25,9 +27,29 @@ function renderFriendsList(file) {
       </div>
     </div>
   `;
-  });
+    });
 
-  dataPanel.innerHTML = rawHTML;
+    dataPanel.innerHTML = rawHTML;
+  } else if (dataPanel.dataset.mode === 'list-mode') {
+    let rawHTML = `<ul class="list-group col-sm-12 mb-2" id="render-friend-list">`;
+
+    file.forEach((item) => {
+      rawHTML += `
+    <li class="list-group-item d-flex justify-content-between">
+        <h5 class="card-title">${item.name} ${item.surname}</h5>
+        <div>
+          <button id="list-more" class="btn btn-outline-primary mx-2" data-bs-toggle="modal" data-bs-target="#modal-btn" data-id="${item.id}">More</button>
+          <i class="fa-regular fa-heart text-danger " data-id="${item.id}"></i>
+        </div>
+    </li>
+  `;
+    });
+
+    rawHTML += `</ul>`;
+
+    dataPanel.innerHTML = rawHTML;
+  }
+  
 }
 
 function addToFavorite(id) {
@@ -72,6 +94,17 @@ function showFriendModal(id) {
     modalAvatar.src = data.avatar;
   });
 }
+
+// Shift mode
+// 在dataPanel上面綁data-mode，可以任使用者切換模式
+function shiftMode(displayMode) {
+  if (dataPanel.dataset.mode === displayMode) {
+    return
+  }else {
+    dataPanel.dataset.mode = displayMode
+  }
+  }
+
 
 function renderPaginator(cardTotal) {
   // 200 / 18 = 11...2
@@ -119,9 +152,23 @@ searchForm.addEventListener("submit", function onSearchBtnSubmitted(event) {
   renderPaginator(filteredCard.length);
 });
 
+// Shift card mode or list mode
+shiftCardAndList.addEventListener("click", function onＳhiftClicked(event) {
+  if (event.target.matches(".fa-th")) {
+    shiftMode("card-mode");
+    renderFriendsList(getCardByPage(currentPage));
+    console.log(dataPanel.dataset.mode)
+  } else if (event.target.matches(".fa-bars")) {
+    shiftMode("list-mode");
+    renderFriendsList(getCardByPage(currentPage));
+    console.log(dataPanel.dataset.mode)
+  }
+});
+
+
 // Card
 dataPanel.addEventListener("click", function (event) {
-  if (event.target.matches("#card-img")) {
+  if (event.target.matches("#card-img") || event.target.matches("#list-more")) {
     showFriendModal(Number(event.target.dataset.id));
     console.log(Number(event.target.dataset.id));
   }
@@ -141,7 +188,7 @@ dataPanel.addEventListener("click", function (event) {
 
 // Paginator
 // 要用現在的頁碼進行上下一頁的功能，所以要宣告一個變數
-let currentPage = 0;
+let currentPage = 1;
 
 paginator.addEventListener("click", function onPaginatorClicked(event) {
   const page = Number(event.target.dataset.id);

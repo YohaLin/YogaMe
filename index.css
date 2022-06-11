@@ -46,6 +46,10 @@ body {
   outline-color: #ae3c2b;
 }
 
+#shift-card-and-list i {
+  color: #ae3c2b;
+}
+
 /* Cards */
 #friends-zone {
   margin: 0 auto 200px auto;

@@ -42,6 +42,10 @@ body {
   border-left: none;
 }
 
+#shift-card-and-list i {
+  color: #ae3c2b;
+}
+
 #btn-search {
   color: #ae3c2b;
   outline-color: #ae3c2b;
